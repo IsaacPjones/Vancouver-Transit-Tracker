@@ -1,12 +1,110 @@
 # Vancouver Transit Tracker
-Group 14 Clouds: Daniel Erickson, Chris Leung, Isaac Jones, Gurdit Virk
 
-### AI disclosure form in here:
-[link to M0 disclosures](docs/ai-disclosures/README.md) <br>
-### What is Vancouver Transit Tracker?
-Vancouver Transit Tracker is a simple and sleek website that provides you with up-to-date information about nearby bus departures, change of schedules and other related transit information. Our website provides the user with the raw information about bus times, and unlike google maps we do not hide results based on distance.
+Live, map based Vancouver transit tracking without Google dependency
+
+**Live App:** https://vancouver-transit-tracker.vercel.app/  
+**Demo Video:** https://www.youtube.com/watch?v=5VvWtFj0LGk
 
 ---
 
-###  Software Development Life Cycle
-We have chosen to go with an agile approach, using a Kanban system to create and track tickets. We thought this method was best for us because it allows for a lot of flexibility. Since we’re all fairly new to web development, we knew there would be a learning curve and possibly some unexpected issues. Kanban gives us the freedom to adjust our priorities as we go and break tasks down into manageable steps. It also helps us stay organized despite having different schedules, and makes it easy to see what everyone is working on.   
+## Overview
+
+Vancouver Transit Tracker is a web application that provides real time bus arrival data, service alerts, and arrival notifications for Vancouver transit users. Unlike traditional trip planners, this application prioritizes raw, live transit data so users can make their own routing decisions without being constrained by automated trip planning.
+
+The application was designed to support:
+- Local commuters who already know their routes and want flexibility
+- Visitors without access to Google services
+- Users who want fast access to arrival times and alerts without full trip planning
+
+---
+
+## Features
+
+### Interactive Transit Map
+- Clickable bus stops with real time arrival information
+- Route based lookup showing all upcoming stops and arrivals
+- Marker clustering to maintain performance with thousands of stops
+
+### Real Time Transit Data
+- Live data fetched from the TransLink API
+- Graceful fallback to static data when live data is unavailable
+- Visual indicators for active service alerts affecting routes or stops
+
+### Arrival Notifications
+- Web notifications for selected bus schedules
+- Background service worker support so notifications work even when the app is closed
+- Automatic scheduling of follow up notifications as buses approach
+
+### Location Awareness
+- User geolocation with accuracy radius visualization
+- Desktop GPS uncertainty warnings to prevent misleading positioning
+- Recenter and quick navigation controls
+
+---
+
+## Tech Stack
+
+### Frontend
+- React
+- Vite
+- Leaflet
+- Mapbox
+
+### Backend and APIs
+- TransLink API
+- Web Notification API
+- Service workers
+- Serverless functions
+
+### DevOps
+- GitHub Actions
+- ESLint
+- Vercel
+
+---
+
+## Architecture
+
+- MVC based architecture separating UI, data models, and control logic
+- Serverless API layer to protect keys and manage external requests
+- Caching and clustering strategies to improve map performance
+- Graceful error handling to keep the application responsive during API failures
+
+---
+
+## Testing and Quality
+
+- Automated linting and production build validation via CI
+- Jest used to simulate API edge cases and malformed responses
+- Manual UI testing focused on performance and usability
+- Performance improvements driven by peer testing feedback
+
+---
+
+## CI/CD Pipeline
+
+- GitHub Actions runs linting and production builds on every merge
+- Secrets managed securely using GitHub Secrets
+- Automatic deployment to Vercel
+- Runtime monitoring with Core Web Vitals and error tracking
+
+---
+
+## Known Limitations
+
+- Notification system currently uses a shared user profile
+- Some inconsistencies originate from external transit schedule data
+- UI scaling improvements needed for varied screen sizes
+
+Known issues and proposed fixes are tracked in GitHub Issues.
+
+---
+
+## Future Improvements
+
+- City bike and scooter tracking integration
+- Natural language transit queries using an AI assistant
+- User favorites for routes and stops
+- Enhanced error handling and accessibility improvements
+
+---
